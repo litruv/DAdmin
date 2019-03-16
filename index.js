@@ -67,9 +67,9 @@ client.on('ready', () => {
 
 function loadplugins() {
   fs.readdir("./plugins/", function (err, items) {
-
+    if(err.code != "ENOENT")
     for (var i = 0; i < items.length; i++) {
-      var reqcommand = require('./commands/' + items[i])
+      var reqcommand = require('./plugins/' + items[i])
     }
   })
 }
