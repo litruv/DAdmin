@@ -125,21 +125,4 @@ function doCommand(msg, prefix) {
 
     delete require.cache[require.resolve('./commands/' + cmds[0].file)]
   }
-
-
-  //if (msg.guild.id != "355555081296412683") return;
-
-  //if (linkify.find(message).length > 0)
-  //msg.reply(linkify.find(message)[0].href);
-
-  /*
-      if (fs.existsSync('./commands/' + command + '.js')) {
-          console.log(msg.member.displayName + ": " + command);
-
-          var reqcommand = require('./commands/' + command);
-          reqcommand.runcommand(client, msg, database);
-          delete require.cache[require.resolve('./commands/' + command)];
-
-          database.user_add_command(msg.member.id, msg.guild.id);
-      }*/
 }
