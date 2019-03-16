@@ -1,0 +1,145 @@
+//Includes
+const Discord = require('discord.js')
+const client = new Discord.Client()
+client.database = require('./database')
+const linkify = require('linkifyjs')
+const fs = require('fs')
+const colors = require('colors');
+
+//Globals
+
+//Database Connection
+client.database.connect().then(con => {
+  try {
+    client.database.get_setting('token').then(token => {
+      console.log("=Discord==================")
+      client.login(token)
+    })
+  } catch (e) {
+    console.log(e)
+  }
+})
+
+class cachedsettings {
+  constructor(guildID, prefix) {
+    this.prefix = prefix
+    this.guildID = guildID
+  }
+
+  getPrefix() {
+    return this.prefix
+  }
+}
+
+class CachedCommand {
+  constructor(alias, file) {
+    this.alias = alias
+    this.file = file
+  }
+}
+
+class Commands {
+  loadcommands() {
+    fs.readdir("./commands/", function (err, items) {
+      for (var i = 0; i < items.length; i++) {
+        var reqcommand = require('./commands/' + items[i])
+        for (var z = 0; z < reqcommand.alias.length; z++) {
+          var cachedcommand = new CachedCommand(reqcommand.alias[z], items[i])
+          client.cachedcommands.push(cachedcommand)
+        }
+      }
+
+      for (var i = 0; i < client.cachedcommands.length; i++)
+        console.log("Loaded: " + client.cachedcommands[i].alias + " - " + client.cachedcommands[i].file)
+    });
+  }
+}
+
+client.commands = new Commands()
+client.cachedcommands = new Array()
+client.cachedserversettings = new Array();
+
+client.on('ready', () => {
+  console.log("Logged in as " + client.user.tag.green.bold + "!")
+
+  client.commands.loadcommands()
+  loadplugins()
+})
+
+function loadplugins(){
+  fs.readdir("./plugins/", function (err, items) {
+    
+    for (var i = 0; i < items.length; i++) {
+      var reqcommand = require('./commands/' + items[i])
+    }
+  })
+}
+
+client.on("message", (msg) => {
+  if (msg.author.bot) return
+  onMessage(msg)
+})
+
+function onMessage(msg, again = true) {
+  if (client.cachedserversettings.filter(function (server) {
+      return server.guildID == msg.guild.id
+    }).length == 0)
+    client.database.get_setting("prefix", msg.guild.id).then(prefix => {
+      client.cachedserversettings.push(new cachedsettings(msg.guild.id, prefix))
+      doCommand(msg, prefix)
+    }).catch(err => {
+      if (again == true) {
+        client.database.set_setting(msg.guild.id, "prefix", "~")
+        onMessage(msg, false)
+      }
+    })
+  else
+    doCommand(msg, client.cachedserversettings.filter(function (server) {
+      return server.guildID == msg.guild.id
+    })[0].getPrefix())
+}
+
+function doCommand(msg, prefix) {
+  var message = msg.cleanContent
+  if (!message.startsWith(prefix)) return
+
+  //Split into command + args
+  const command = message.substring(prefix.length).split(/[ \n]/)[0].trim()
+  msg.suffix = message.substring(prefix.length + command.length).trim()
+
+  var cmds = client.cachedcommands.filter(cmd => cmd.alias == command);
+  if (cmds.length > 0) {
+    console.log("CMD:".green + " ".reset + msg.member.user.username.bold + "#".reset + msg.member.user.discriminator.reset + " " + prefix.grey + command.green.bold + " ".reset + msg.suffix + " | " + msg.guild.name)
+    var reqcommand = require('./commands/' + cmds[0].file)
+    if (msg.member.hasPermission(reqcommand.permissions)) {
+      msg.react('✅')
+      try {
+        reqcommand.command(client, msg)
+      } catch (err) {
+        console.error('There was an error running: ' + command);
+        console.error(err.stack);
+      }
+    } else {
+      msg.react('⛔')
+    }
+
+    delete require.cache[require.resolve('./commands/' + cmds[0].file)]
+  }
+
+
+  //if (msg.guild.id != "355555081296412683") return;
+
+  //if (linkify.find(message).length > 0)
+  //msg.reply(linkify.find(message)[0].href);
+
+  /*
+      if (fs.existsSync('./commands/' + command + '.js')) {
+          console.log(msg.member.displayName + ": " + command);
+
+          var reqcommand = require('./commands/' + command);
+          reqcommand.runcommand(client, msg, database);
+          delete require.cache[require.resolve('./commands/' + command)];
+
+          database.user_add_command(msg.member.id, msg.guild.id);
+      }*/
+}
