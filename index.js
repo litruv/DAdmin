@@ -2,7 +2,6 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 client.database = require('./database')
-const linkify = require('linkifyjs')
 const fs = require('fs')
 const colors = require('colors');
 
@@ -66,9 +65,9 @@ client.on('ready', () => {
   loadplugins()
 })
 
-function loadplugins(){
+function loadplugins() {
   fs.readdir("./plugins/", function (err, items) {
-    
+
     for (var i = 0; i < items.length; i++) {
       var reqcommand = require('./commands/' + items[i])
     }
