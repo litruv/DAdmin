@@ -1,25 +1,23 @@
-exports.name = 'Stats for DAdmin'
-exports.alias = ['stats']
-exports.helptext = 'Metrics on DAdmin, uptime, users, servers'
-exports.helphide = false
-exports.permissions = ['READ_MESSAGES']
-exports.category = 'general'
-exports.command = (client, msg) => {
-    var users = 0;
-    for (var i = 0; i < client.guilds.array().length; i++){
-        users += client.guilds.array()[i].members.array().length;
-    }
-    
-    msg.reply("Running DAdmin for " + millisecondsToStr(client.uptime) + " on " + client.guilds.array().length + " servers for " + users + " users, since 09 Aug 2018");
+module.exports = {
+    name = 'Stats for DAdmin',
+    alias =['stats'],
+    helptext = 'Metrics on DAdmin, uptime, users, servers',
+    helphide = false,
+    permissions =['READ_MESSAGES'],
+    category = 'general',
+    command = (client, msg) => {
+        var users = 0;
+        for (var i = 0; i < client.guilds.array().length; i++) {
+            users += client.guilds.array()[i].members.array().length;
+        }
 
+        msg.reply("Running DAdmin for " + millisecondsToStr(client.uptime) + " on " + client.guilds.array().length + " servers for " + users + " users, since 09 Aug 2018");
+    }
 }
 
+function millisecondsToStr(milliseconds) {
 
-function millisecondsToStr (milliseconds) {
-    // TIP: to find current time in milliseconds, use:
-    // var  current_time_milliseconds = new Date().getTime();
-
-    function numberEnding (number) {
+    function numberEnding(number) {
         return (number > 1) ? 's' : '';
     }
 
@@ -47,4 +45,3 @@ function millisecondsToStr (milliseconds) {
     }
     return 'less than a second'; //'just now' //or other string you like;
 }
-
