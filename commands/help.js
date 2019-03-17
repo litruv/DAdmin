@@ -2,12 +2,12 @@ const fs = require('fs')
 const Discord = require('discord.js')
 
 module.exports = {
-    name = "Help file",
-    alias =['help', '?'],
-    helptext = "Runs this help menu",
-    permissions =['VIEW_CHANNEL'],
-    args =['(general)/music/admin'],
-    command = (client, msg) => {
+    name: "Help file",
+    alias: ['help', '?'],
+    helptext: "Runs this help menu",
+    permissions: ['VIEW_CHANNEL'],
+    args: ['(general)/music/admin'],
+    command: (client, msg) => {
         fs.readdir("./commands/", function (err, items) {
             var embed = new Discord.RichEmbed
             embed.color = 0x0ca9fe

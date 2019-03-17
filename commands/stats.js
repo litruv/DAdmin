@@ -1,11 +1,11 @@
 module.exports = {
-    name = 'Stats for DAdmin',
-    alias =['stats'],
-    helptext = 'Metrics on DAdmin, uptime, users, servers',
-    helphide = false,
-    permissions =['READ_MESSAGES'],
-    category = 'general',
-    command = (client, msg) => {
+    name: 'Stats for DAdmin',
+    alias: ['stats'],
+    helptext: 'Metrics on DAdmin, uptime, users, servers',
+    helphide: false,
+    permissions: ['READ_MESSAGES'],
+    category: 'general',
+    command: (client, msg) => {
         var users = 0;
         for (var i = 0; i < client.guilds.array().length; i++) {
             users += client.guilds.array()[i].members.array().length;

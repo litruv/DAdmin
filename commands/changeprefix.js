@@ -1,11 +1,11 @@
 module.exports = {
-    name = "Change Prefix",
-    alias =['changeprefix', 'prefix'],
-    helptext = "Changes the bots prefix for the server",
-    permissions =["ADMINISTRATOR"],
-    category = 'admin',
-    args =["new-prefix"],
-    command = (client, msg) => {
+    name: "Change Prefix",
+    alias: ['changeprefix', 'prefix'],
+    helptext: "Changes the bots prefix for the server",
+    permissions: ["ADMINISTRATOR"],
+    category: 'admin',
+    args: ["new-prefix"],
+    command: (client, msg) => {
         if (msg.suffix.length != 1) {
             msg.reply("please only use 1 character")
             return;

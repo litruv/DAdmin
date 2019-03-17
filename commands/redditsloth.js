@@ -2,13 +2,13 @@ var request = require('request');
 var url = "https://www.reddit.com/r/sloths/hot/.json?limit=100";
 
 module.exports = {
-    name = 'Sloth',
-    alias =['sloth'],
-    helptext = 'Inserts good boye from reddit/r/sloths',
-    helphide = false,
-    permissions =['READ_MESSAGES'],
-    category = 'general',
-    command = (client, msg) => {
+    name: 'Sloth',
+    alias: ['sloth'],
+    helptext: 'Inserts good boye from reddit/r/sloths',
+    helphide: false,
+    permissions: ['READ_MESSAGES'],
+    category: 'general',
+    command: (client, msg) => {
         request({
             url: url,
             json: true

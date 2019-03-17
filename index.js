@@ -41,6 +41,7 @@ class Commands {
   loadcommands() {
     fs.readdir("./commands/", function (err, items) {
       for (var i = 0; i < items.length; i++) {
+        console.log("loading: " + items[i])
         var reqcommand = require('./commands/' + items[i])
         for (var z = 0; z < reqcommand.alias.length; z++) {
           var cachedcommand = new CachedCommand(reqcommand.alias[z], items[i])
@@ -67,10 +68,10 @@ client.on('ready', () => {
 
 function loadplugins() {
   fs.readdir("./plugins/", function (err, items) {
-    if(err.code != "ENOENT")
-    for (var i = 0; i < items.length; i++) {
-      var reqcommand = require('./plugins/' + items[i])
-    }
+    if (err.code != "ENOENT")
+      for (var i = 0; i < items.length; i++) {
+        var reqcommand = require('./plugins/' + items[i])
+      }
   })
 }
 
@@ -81,8 +82,8 @@ client.on("message", (msg) => {
 
 function onMessage(msg, again = true) {
   if (client.cachedserversettings.filter(function (server) {
-      return server.guildID == msg.guild.id
-    }).length == 0)
+    return server.guildID == msg.guild.id
+  }).length == 0)
     client.database.get_setting("prefix", msg.guild.id).then(prefix => {
       client.cachedserversettings.push(new cachedsettings(msg.guild.id, prefix))
       doCommand(msg, prefix)

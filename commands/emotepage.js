@@ -1,9 +1,9 @@
 module.exports = {
-    name = "Emote Page Test",
-    alias =['emotetest'],
-    helptext = "testing for emote responses",
-    helphide = true;,
-    command = (client, msg) => {
+    name: "Emote Page Test",
+    alias: ['emotetest'],
+    helptext: "testing for emote responses",
+    helphide: true,
+    command: (client, msg) => {
 
         msg.reply("testing emote thing")
             .then(sent => {

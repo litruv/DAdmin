@@ -3,12 +3,12 @@ const Discord = require('discord.js')
 const request = require('request');
 
 module.exports = {
-    name = "Anagram Finder",
-    alias =['anagram', 'nagaram'],
-    helptext = "finds anagrams up to 9 letters",
-    permissions =['VIEW_CHANNEL'],
-    args =['letters'],
-    command = (client, msg) => {
+    name: "Anagram Finder",
+    alias: ['anagram', 'nagaram'],
+    helptext: "finds anagrams up to 9 letters",
+    permissions: ['VIEW_CHANNEL'],
+    args: ['letters'],
+    command: (client, msg) => {
 
         var url = "http://www.anagramica.com/best/:"
 

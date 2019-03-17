@@ -1,11 +1,11 @@
 module.exports = {
-    name = 'Self Diagnosis',
-    alias =['diagnose', 'webmd'],
-    helptext = 'What cancer do you have today?',
-    helphide = false,
-    permissions =['READ_MESSAGES'],
-    category = 'general',
-    command = (client, msg) => {
+    name: 'Self Diagnosis',
+    alias: ['diagnose', 'webmd'],
+    helptext: 'What cancer do you have today?',
+    helphide: false,
+    permissions: ['READ_MESSAGES'],
+    category: 'general',
+    command: (client, msg) => {
         switch (getRandomInt(0, 25)) {
             case 0:
                 msg.reply("I'm sorry, It's Cancer.");

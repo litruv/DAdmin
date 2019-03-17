@@ -1,12 +1,12 @@
 module.exports = {
-    name = 'Permissions',
-    alias =['permissions'],
-    helptext = 'Check permissions for user',
-    helphide = false,
-    permissions =['MANAGE_ROLES_OR_PERMISSIONS'],
-    args =['@Tag'],
-    category = 'admin',
-    command = (client, msg) => {
+    name: 'Permissions',
+    alias: ['permissions'],
+    helptext: 'Check permissions for user',
+    helphide: false,
+    permissions: ['MANAGE_ROLES_OR_PERMISSIONS'],
+    args: ['@Tag'],
+    category: 'admin',
+    command: (client, msg) => {
         if (msg.mentions.members.array().length != 1)
             return;
 
