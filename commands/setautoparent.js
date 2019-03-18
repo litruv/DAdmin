@@ -7,6 +7,6 @@ module.exports = {
     args: ['VChannelID'],
     category: 'admin',
     command: (client, msg) => {
-        database.set_setting(msg.guild.id, "autoParent", msg.suffix);
+        client.database.set_setting(msg.guild.id, "autoParent", msg.suffix);
     }
 }
