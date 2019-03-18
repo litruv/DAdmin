@@ -41,7 +41,6 @@ class Commands {
   loadcommands() {
     fs.readdir("./commands/", function (err, items) {
       for (var i = 0; i < items.length; i++) {
-        console.log("loading: " + items[i])
         var reqcommand = require('./commands/' + items[i])
         for (var z = 0; z < reqcommand.alias.length; z++) {
           var cachedcommand = new CachedCommand(reqcommand.alias[z], items[i])
@@ -50,7 +49,7 @@ class Commands {
       }
 
       for (var i = 0; i < client.cachedcommands.length; i++)
-        console.log("Loaded: " + client.cachedcommands[i].alias + " - " + client.cachedcommands[i].file)
+        console.log("Command Loaded: ".cyan + client.cachedcommands[i].alias + " " + client.cachedcommands[i].file.cyan)
     });
   }
 }
@@ -68,9 +67,11 @@ client.on('ready', () => {
 
 function loadplugins() {
   fs.readdir("./plugins/", function (err, items) {
-    if (err.code != "ENOENT")
+    if (err == undefined)
       for (var i = 0; i < items.length; i++) {
         var reqcommand = require('./plugins/' + items[i])
+        reqcommand.init(client);
+        console.log("Plugin Loaded: ".magenta + reqcommand.name + " " + items[i].magenta)
       }
   })
 }
