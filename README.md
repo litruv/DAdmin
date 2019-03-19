@@ -1,3 +1,11 @@
+<h1 align="center">
+  <br>
+  <a href="https://github.com/litruv/DAdmin/"><img src="http://litruv.com/resources/dadmin.jpg" alt="Red - Discord Bot"></a>
+  <br>
+  Red Discord Bot
+  <br>
+</h1>
+
 DAdmin
 ======
 _Administrator bot for Discord  Server automation_
