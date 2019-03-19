@@ -41,10 +41,16 @@ class Commands {
   loadcommands() {
     fs.readdir("./commands/", function (err, items) {
       for (var i = 0; i < items.length; i++) {
-        var reqcommand = require('./commands/' + items[i])
-        for (var z = 0; z < reqcommand.alias.length; z++) {
-          var cachedcommand = new CachedCommand(reqcommand.alias[z], items[i])
-          client.cachedcommands.push(cachedcommand)
+        try {
+          var reqcommand = require('./commands/' + items[i])
+          for (var z = 0; z < reqcommand.alias.length; z++) {
+            var cachedcommand = new CachedCommand(reqcommand.alias[z], items[i])
+            client.cachedcommands.push(cachedcommand)
+          }
+  
+        } catch (error) {
+          console.log('error with:' + items[i])
+          console.error(error)         
         }
       }
 
