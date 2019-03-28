@@ -2,8 +2,8 @@ var request = require('request');
 var url = "https://www.reddit.com/r/battlestations/hot/.json?limit=100";
 
 module.exports = {
-    name: 'Sloth',
-    alias: ['sloth'],
+    name: 'Battlestations',
+    alias: ['battlestations', 'battlestation'],
     helptext: 'Inserts battlestation from reddit/r/battlestations',
     helphide: false,
     permissions: ['READ_MESSAGES'],
