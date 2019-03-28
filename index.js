@@ -115,7 +115,7 @@ function doCommand(msg, prefix) {
   if (!message.startsWith(prefix)) return
 
   //Split into command + args
-  const command = message.substring(prefix.length).split(/[ \n]/)[0].trim()
+  const command = message.substring(prefix.length).split(/[ \n]/)[0].trim().toLowerCase()
   msg.suffix = message.substring(prefix.length + command.length).trim()
 
   var cmds = client.cachedcommands.filter(cmd => cmd.alias == command);
