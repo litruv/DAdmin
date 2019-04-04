@@ -132,6 +132,7 @@ function doPMCommand(msg, prefix) {
       } catch (err) {
         console.error('There was an error running: ' + command);
         console.error(err.stack);
+        msg.react('⚠️')
       }
     } else {
       msg.react('⛔')
