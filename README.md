@@ -2,9 +2,9 @@
   <br>
   <a href="https://github.com/litruv/DAdmin/"><img src="https://litruv.com/resources/dadmin.jpg" alt="DAdmin - Discord Bot"></a>
   <br>
-  DAdmin  
+  DAdmin   
   <br>
-</h1>
+</h1> 
 <h3 align="center">
 Administration bot for Discord  Server automation
 </h3>
