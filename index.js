@@ -125,14 +125,19 @@ function doPMCommand(msg, prefix) {
   if (cmds.length > 0) {
     console.log("CMD:".green + " ".reset + msg.author.username.bold + "#".reset + msg.author.discriminator.reset + " " + prefix.grey + command.green.bold + " ".reset + msg.suffix + " | PM")
     var reqcommand = require('./commands/' + cmds[0].file)
-    msg.react('✅')
-    try {
-      reqcommand.command(client, msg)
-    } catch (err) {
-      console.error('There was an error running: ' + command);
-      console.error(err.stack);
+    if (reqcommand.permissions == ['READ_MESSAGES']) {
+      msg.react('✅')
+      try {
+        reqcommand.command(client, msg)
+      } catch (err) {
+        console.error('There was an error running: ' + command);
+        console.error(err.stack);
+      }
+    } else {
+      msg.react('⛔')
     }
   }
+
 
   delete require.cache[require.resolve('./commands/' + cmds[0].file)]
 }
