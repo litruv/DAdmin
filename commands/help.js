@@ -6,6 +6,7 @@ module.exports = {
     alias: ['help', '?'],
     helptext: "Runs this help menu",
     permissions: ['VIEW_CHANNEL'],
+    category: 'general',
     args: ['(general)/music/admin'],
     command: (client, msg) => {
         fs.readdir("./commands/", function (err, items) {
@@ -61,10 +62,11 @@ module.exports = {
                     }
                 description += "```apache\n"
                 for (var z = 0; z < reqcommand.alias.length; z++) {
-                    description += client.cachedserversettings.filter(function (server) {
-                        return server.guildID == msg.guild.id;
-                    })[0].prefix
-
+                    if (msg.channel.type != "dm") {
+                        description += client.cachedserversettings.filter(function (server) {
+                            return server.guildID == msg.guild.id;
+                        })[0].prefix
+                    }
                     description += reqcommand.alias[z] + " ";
                     if (z != reqcommand.alias.length - 1)
                         description += "/ ";
