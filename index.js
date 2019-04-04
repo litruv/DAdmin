@@ -117,6 +117,7 @@ function onMessage(msg, again = true) {
   }
 }
 function doPMCommand(msg, prefix) {
+  var message = msg.cleanContent
   const command = message.substring(prefix.length).split(/[ \n]/)[0].trim().toLowerCase()
   msg.suffix = message.substring(prefix.length + command.length).trim()
 
