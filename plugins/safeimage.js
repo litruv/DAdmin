@@ -7,6 +7,7 @@ module.exports = {
             if (msg.author.bot) return
             if (msg.attachments.array().length = 0) return
             var img = msg.attachments.first()
+            if (img == undefined) return
             if (img.height == undefined) return
             if (msg.channel.nsfw) return
 
