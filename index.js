@@ -51,10 +51,10 @@ class Commands {
             var cachedcommand = new CachedCommand(reqcommand.alias[z], items[i])
             client.cachedcommands.push(cachedcommand)
           }
-  
+
         } catch (error) {
           console.log('error with:' + items[i])
-          console.error(error)         
+          console.error(error)
         }
       }
 
@@ -92,22 +92,29 @@ client.on("message", (msg) => {
 })
 
 function onMessage(msg, again = true) {
-  if (client.cachedserversettings.filter(function (server) {
-    return server.guildID == msg.guild.id
-  }).length == 0)
-    client.database.get_setting("prefix", msg.guild.id).then(prefix => {
-      client.cachedserversettings.push(new cachedsettings(msg.guild.id, prefix))
-      doCommand(msg, prefix)
-    }).catch(err => {
-      if (again == true) {
-        client.database.set_setting(msg.guild.id, "prefix", "~")
-        onMessage(msg, false)
-      }
-    })
-  else
-    doCommand(msg, client.cachedserversettings.filter(function (server) {
+  if (msg.channel.type = "dm") {
+    doCommand(msg, "")
+  }
+  else {
+
+    if (client.cachedserversettings.filter(function (server) {
       return server.guildID == msg.guild.id
-    })[0].getPrefix())
+    }).length == 0)
+      client.database.get_setting("prefix", msg.guild.id).then(prefix => {
+        client.cachedserversettings.push(new cachedsettings(msg.guild.id, prefix))
+        doCommand(msg, prefix)
+      }).catch(err => {
+        if (again == true) {
+          client.database.set_setting(msg.guild.id, "prefix", "~")
+          onMessage(msg, false)
+        }
+      })
+    else
+      doCommand(msg, client.cachedserversettings.filter(function (server) {
+        return server.guildID == msg.guild.id
+      })[0].getPrefix())
+
+  }
 }
 
 function doCommand(msg, prefix) {
