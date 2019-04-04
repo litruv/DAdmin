@@ -93,7 +93,7 @@ client.on("message", (msg) => {
 
 function onMessage(msg, again = true) {
   if (msg.channel.type = "dm") {
-    doCommand(msg, "")
+    doPMCommand(msg, "")
   }
   else {
 
@@ -115,6 +115,26 @@ function onMessage(msg, again = true) {
       })[0].getPrefix())
 
   }
+}
+function doPMCommand(msg, prefix) {
+  const command = message.substring(prefix.length).split(/[ \n]/)[0].trim().toLowerCase()
+  msg.suffix = message.substring(prefix.length + command.length).trim()
+
+  var cmds = client.cachedcommands.filter(cmd => cmd.alias == command);
+  if (cmds.length > 0) {
+    console.log("CMD:".green + " ".reset + msg.author.user.username.bold + "#".reset + msg.author.user.discriminator.reset + " " + prefix.grey + command.green.bold + " ".reset + msg.suffix + " | PM")
+    var reqcommand = require('./commands/' + cmds[0].file)
+    msg.react('✅')
+    try {
+      reqcommand.command(client, msg)
+    } catch (err) {
+      console.error('There was an error running: ' + command);
+      console.error(err.stack);
+    }
+  }
+
+  delete require.cache[require.resolve('./commands/' + cmds[0].file)]
+}
 }
 
 function doCommand(msg, prefix) {
