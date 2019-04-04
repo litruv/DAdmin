@@ -13,7 +13,7 @@ Overview
 -----
 **DAdmin** is a [Discord.js](https://discord.js.org/) bot, designed to be easy to modify, and not have to reset while making/modifying commands and plugins
 
-
+ 
 <h2>Admin Commands</h2>
 
 <strong>Change <span tabindex="0" class="mention wrapperHover-1GktnT wrapper-3WhCwL" role="button">@DAdmin</span>~s Name</strong> - <em>Changes the bots name on the server</em> 
