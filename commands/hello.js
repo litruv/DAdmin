@@ -6,6 +6,6 @@ module.exports = {
     permissions: ['READ_MESSAGES'],
     category: 'general',
     command: (client, msg) => {
-        msg.reply("G'day!")
+        msg.reply("G'day Mate!")
     }
 }
