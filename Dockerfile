@@ -6,8 +6,10 @@ WORKDIR /app
 # app directory
 COPY package.json /app
 # We then run npm install to install
-# express for our application
-RUN apt-get install --assume-yes git
+# express for our applicationRUN 
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get install -y git
 RUN npm install
 # We then copy the rest of our application
 # to the app direcoty
