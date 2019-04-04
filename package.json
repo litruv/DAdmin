@@ -13,8 +13,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "dockerstart": "git pull && node index.js"
+    "start": "git pull && node index.js"
   },
   "author": "",
   "license": "ISC"
