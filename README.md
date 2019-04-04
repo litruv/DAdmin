@@ -13,6 +13,7 @@ Overview
 -----
 **DAdmin** is a [Discord.js](https://discord.js.org/) bot, designed to be easy to modify, and not have to reset while making/modifying commands and plugins
 
+<h3 align="center"><a href="https://twitter.com/litruv/"><img alt="Twitter URL" src="https://img.shields.io/twitter/url/https/twitter.com/litruv.svg?style=social"></a> <img alt="Discord" src="https://img.shields.io/discord/355555081296412683.svg?label=Discord"> <img src="https://img.shields.io/github/languages/code-size/litruv/DAdmin.svg"> <img alt="GitHub All Releases" src="https://img.shields.io/github/downloads/litruv/DAdmin/total.svg"> <img alt="Uptime Robot ratio (30 days)" src="https://img.shields.io/uptimerobot/ratio/m782347736-f25207a8618cb6eec9a95b6a.svg"> <img alt="Docker Cloud Build Status" src="https://img.shields.io/docker/cloud/build/litruv/dadmin.svg"></h3>
 
 <h2>Admin Commands</h2>
 
