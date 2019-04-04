@@ -1,3 +1,5 @@
+const fs = require("fs")
+
 module.exports = {
     name: "Google Safe Image",
     init: (dclient) => {
@@ -44,9 +46,10 @@ async function detectSafeSearch(fileName, cb) {
     const vision = require('@google-cloud/vision');
 
     // Creates a client
+    var pid = JSON.parse(fs.readFileSync("./googleapi.json")).project_id
     const client = new vision.ImageAnnotatorClient({
-        projectId: 'causal-galaxy-207206',
-        keyFilename: 'C:/dev/myproject.json'
+        projectId: pid,
+        keyFilename: './googleapi.json'
     });
 
     /**
