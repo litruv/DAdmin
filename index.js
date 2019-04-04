@@ -135,7 +135,7 @@ function doPMCommand(msg, prefix) {
 
   delete require.cache[require.resolve('./commands/' + cmds[0].file)]
 }
-}
+
 
 function doCommand(msg, prefix) {
   var message = msg.cleanContent
