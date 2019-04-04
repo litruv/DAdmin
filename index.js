@@ -125,7 +125,7 @@ function doPMCommand(msg, prefix) {
   if (cmds.length > 0) {
     console.log("CMD:".green + " ".reset + msg.author.username.bold + "#".reset + msg.author.discriminator.reset + " " + prefix.grey + command.green.bold + " ".reset + msg.suffix + " | PM")
     var reqcommand = require('./commands/' + cmds[0].file)
-    if (reqcommand.permissions == ['READ_MESSAGES']) {
+    if (reqcommand.permissions == 'READ_MESSAGES') {
       msg.react('✅')
       try {
         reqcommand.command(client, msg)
@@ -135,6 +135,7 @@ function doPMCommand(msg, prefix) {
       }
     } else {
       msg.react('⛔')
+      msg.reply(reqcommand.permissions)
     }
   }
 
