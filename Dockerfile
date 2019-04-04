@@ -13,4 +13,4 @@ RUN npm install
 COPY . /app
 # We start our application by calling
 # npm start.
-CMD ["npm", "dockerstart"]
+CMD ["npm", "run-script dockerstart"]

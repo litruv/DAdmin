@@ -14,7 +14,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "startdocker": "git pull && node index.js"
+    "dockerstart": "git pull && node index.js"
   },
   "author": "",
   "license": "ISC"
