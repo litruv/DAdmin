@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/litruv/DAdmin/"><img src="https://i.imgur.com/mlDNyx1.jpg" alt="DAdmin - Discord Bot"></a>
+  <a href="https://github.com/litruv/DAdmin/"><img style="max-width:100%" src="https://i.imgur.com/mlDNyx1.jpg" alt="DAdmin - Discord Bot"></a>
   <br>
   DAdmin
   <br>
