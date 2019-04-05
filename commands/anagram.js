@@ -7,6 +7,7 @@ module.exports = {
     alias: ['anagram', 'nagaram'],
     helptext: "finds anagrams up to 9 letters",
     permissions: ['VIEW_CHANNEL'],
+    group: "general",
     args: ['letters'],
     command: (client, msg) => {
 
