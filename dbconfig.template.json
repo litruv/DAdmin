@@ -1,6 +1,6 @@
 {
-    "mysql_user" : "username",
-    "mysql_host" : "db.host.com",
-    "mysql_password" : "hunter2",
-    "mysql_db" : "bot_db"
+    "mysql_user": "username",
+    "mysql_host": "db.host.com",
+    "mysql_password": "hunter2",
+    "mysql_db": "bot_db"
 }

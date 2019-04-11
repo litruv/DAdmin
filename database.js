@@ -19,10 +19,14 @@ module.exports = {
         });
     },
 
-    get_setting: async function (settingname, guildID=0) {
-        
-        var settingreturn = await sql_q(settingname, guildID);
-        return settingreturn[0].value;
+    get_setting: async function (settingname, guildID = 0) {
+        try {
+            var settingreturn = await sql_q(settingname, guildID);
+            return settingreturn[0].value;
+        }
+        catch (err) {
+            console.error(`Error: with settingname '${settingname}' on Guild ${guildID} ` + err)
+        }
     },
 
     set_setting: async function (guildID, settingname, value) {
