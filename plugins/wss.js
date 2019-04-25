@@ -32,7 +32,7 @@ module.exports = {
                                 discriminator: dclient.user.discriminator,
                                 displayAvatarURL: dclient.user.displayAvatarURL,
                                 id: dclient.user.id,
-                                lastMessage: dclient.user.lastMessage,
+                                //lastMessage: dclient.user.lastMessage,
                                 lastMessageID: dclient.user.lastMessageID,
                                 presence: dclient.user.presence,
                                 tag: dclient.user.tag,
@@ -42,7 +42,7 @@ module.exports = {
                         }))
 
                 dclient.on('message', (message) => {
-                    ws.send(message)
+                    ws.send(message.cleanContent)
                 })
             });
 
