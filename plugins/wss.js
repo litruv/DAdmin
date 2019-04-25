@@ -25,7 +25,7 @@ module.exports = {
                                 avatar: dclient.user.avatar,
                                 avatarURL: dclient.user.avatarURL,
                                 bot: dclient.user.bot,
-                                client: dclient.user.client,
+                                //   client: dclient.user.client,
                                 createdAt: dclient.user.createdAt,
                                 createdTimestamp: dclient.user.createdTimestamp,
                                 defaultAvatarURL: dclient.user.defaultAvatarURL,
