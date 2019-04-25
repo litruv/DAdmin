@@ -19,7 +19,7 @@ module.exports = {
         wss.on('connection', function connection(ws) {
             ws.on('message', function incoming(message) {
                 if (message == "name")
-                    ws.send({ name: dclient.user.username })
+                    ws.send({ name: "dclient.user.username" })
                 ws.send(`something ${message}`);
             });
 
