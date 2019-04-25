@@ -44,7 +44,12 @@ module.exports = {
             });
 
             dclient.on('message', (message) => {
-                ws.send(stringify(message))
+                wss.clients.forEach(function each(client) {
+                    if (client !== ws && client.readyState === WebSocket.OPEN) {
+                        client.send(stringify(message))
+                    }
+                }
+                
             })
             // ws.send('something');
         });
