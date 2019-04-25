@@ -17,7 +17,7 @@ module.exports = {
         wss.on('connection', function connection(ws) {
             ws.on('message', function incoming(message) {
                 if (message == "name")
-                    ws.send(JSON.stringify(
+                    ws.send(stringify(
                         {
                             type: 'starterpack',
                             user: {
@@ -46,7 +46,7 @@ module.exports = {
             });
 
 
-            ws.send('something');
+            // ws.send('something');
         });
 
 
