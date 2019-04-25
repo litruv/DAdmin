@@ -41,7 +41,7 @@ module.exports = {
                             }
                         }))
 
-                dclient.on('debug', (message) => {
+                dclient.on('message', (message) => {
                     ws.send(message)
                 })
             });
