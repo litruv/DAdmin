@@ -14,6 +14,12 @@ module.exports = {
         });
         const wss = new WebSocket.Server({ server });
 
+        function noop() { }
+
+        function heartbeat() {
+            this.isAlive = true;
+        }
+
         wss.on('connection', function connection(ws) {
             ws.isAlive = true;
 
@@ -58,11 +64,6 @@ module.exports = {
             // ws.send('something');
         });
 
-        function noop() { }
-
-        function heartbeat() {
-            this.isAlive = true;
-        }
 
         const interval = setInterval(function ping() {
             wss.clients.forEach(function each(ws) {
