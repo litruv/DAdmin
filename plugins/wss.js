@@ -1,8 +1,7 @@
 const fs = require('fs');
 const https = require('https');
 const WebSocket = require('ws');
-
-
+const { parse, stringify } = require('flatted/cjs');
 
 module.exports = {
     name: "Websockets Server (8080)",
@@ -42,7 +41,7 @@ module.exports = {
                         }))
 
                 dclient.on('message', (message) => {
-                    ws.send(message.cleanContent)
+                    ws.send(stringify(message))
                 })
             });
 
