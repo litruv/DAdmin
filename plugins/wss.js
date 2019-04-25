@@ -15,6 +15,8 @@ module.exports = {
         const wss = new WebSocket.Server({ server });
 
         wss.on('connection', function connection(ws) {
+            ws.isAlive = true;
+
             ws.on('message', function incoming(message) {
                 if (message == "name")
                     ws.send(stringify(
@@ -43,6 +45,8 @@ module.exports = {
 
             });
 
+            ws.on('pong', heartbeat);
+
             dclient.on('message', (message) => {
                 wss.clients.forEach(function each(client) {
                     if (client !== ws && client.readyState === WebSocket.OPEN) {
@@ -54,8 +58,20 @@ module.exports = {
             // ws.send('something');
         });
 
+        function noop() { }
 
+        function heartbeat() {
+            this.isAlive = true;
+        }
 
+        const interval = setInterval(function ping() {
+            wss.clients.forEach(function each(ws) {
+                if (ws.isAlive === false) return ws.terminate();
+
+                ws.isAlive = false;
+                ws.ping(noop);
+            });
+        }, 5000);
 
         server.listen(8080);
 
