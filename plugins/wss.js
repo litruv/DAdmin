@@ -19,8 +19,7 @@ module.exports = {
         wss.on('connection', function connection(ws) {
             ws.on('message', function incoming(message) {
                 if (message == "name")
-                    ws.send(JSON.stringify({ name: dclient.user.username }))
-                ws.send(`something ${message}`);
+                    ws.send(JSON.stringify({ type: 'starterpack', user: dclient.user }))
             });
 
 
