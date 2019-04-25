@@ -6,6 +6,9 @@ WORKDIR /app
 # app directory
 COPY package.json /app
 
+#for websockets
+EXPOSE 8080/tcp
+EXPOSE 8080/udp
 
 RUN apt-get update \
     && apt-get clean \
