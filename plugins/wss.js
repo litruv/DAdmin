@@ -22,22 +22,22 @@ module.exports = {
                         {
                             type: 'starterpack',
                             user: {
-                                avatar: dclient.avatar,
-                                avatarURL: dclient.avatarURL,
-                                bot: dclient.bot,
-                                client: dclient.client,
-                                createdAt: dclient.createdAt,
-                                createdTimestamp: dclient.createdTimestamp,
-                                defaultAvatarURL: dclient.defaultAvatarURL,
-                                discriminator: dclient.discriminator,
-                                displayAvatarURL: dclient.displayAvatarURL,
-                                id: dclient.id,
-                                lastMessage: dclient.lastMessage,
-                                lastMessageID: dclient.lastMessageID,
-                                presence: dclient.presence,
-                                tag: dclient.tag,
-                                username: dclient.username,
-                                verified: dclient.verified
+                                avatar: dclient.user.avatar,
+                                avatarURL: dclient.user.avatarURL,
+                                bot: dclient.user.bot,
+                                client: dclient.user.client,
+                                createdAt: dclient.user.createdAt,
+                                createdTimestamp: dclient.user.createdTimestamp,
+                                defaultAvatarURL: dclient.user.defaultAvatarURL,
+                                discriminator: dclient.user.discriminator,
+                                displayAvatarURL: dclient.user.displayAvatarURL,
+                                id: dclient.user.id,
+                                lastMessage: dclient.user.lastMessage,
+                                lastMessageID: dclient.user.lastMessageID,
+                                presence: dclient.user.presence,
+                                tag: dclient.user.tag,
+                                username: dclient.user.username,
+                                verified: dclient.user.verified
                             }
                         }))
             });
