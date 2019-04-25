@@ -48,8 +48,8 @@ module.exports = {
                     if (client !== ws && client.readyState === WebSocket.OPEN) {
                         client.send(stringify(message))
                     }
-                }
-                
+                })
+
             })
             // ws.send('something');
         });
