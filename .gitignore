@@ -6,3 +6,5 @@ googleapi\.json
 setup.json
 merged.mp3
 output.mp3
+privkey.pem
+cert.pem

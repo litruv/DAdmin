@@ -18,14 +18,16 @@ module.exports = {
 
         wss.on('connection', function connection(ws) {
             ws.on('message', function incoming(message) {
-                console.log('received: %s', message);
+                if (message == "name")
+                    ws.send({ name: dclient.user.username })
                 ws.send(`something ${message}`);
             });
+
 
             ws.send('something');
         });
 
-        server.listen(8080, "0.0.0.0");
+        server.listen(8080);
 
     }
 }
