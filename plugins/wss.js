@@ -40,6 +40,10 @@ module.exports = {
                                 verified: dclient.user.verified
                             }
                         }))
+
+                dclient.on('debug', (message) => {
+                    ws.send(message)
+                })
             });
 
 
@@ -48,9 +52,6 @@ module.exports = {
 
 
 
-        dclient.on('debug', (message) => {
-            ws.send(message)
-        })
 
         server.listen(8080);
 
