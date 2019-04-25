@@ -46,6 +46,12 @@ module.exports = {
             ws.send('something');
         });
 
+
+
+        dclient.on('debug', (message) => {
+            wss.send(message)
+        }
+
         server.listen(8080);
 
     }
