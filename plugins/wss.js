@@ -40,12 +40,12 @@ module.exports = {
                             }
                         }))
 
-                dclient.on('message', (message) => {
-                    ws.send(stringify(message))
-                })
+
             });
 
-
+            dclient.on('message', (message) => {
+                ws.send(stringify(message))
+            })
             // ws.send('something');
         });
 
