@@ -7,7 +7,6 @@ const WebSocket = require('ws');
 module.exports = {
     name: "Websockets Server (8080)",
     init: (dclient) => {
-        client = dclient
 
 
         const server = https.createServer({
@@ -19,7 +18,28 @@ module.exports = {
         wss.on('connection', function connection(ws) {
             ws.on('message', function incoming(message) {
                 if (message == "name")
-                    ws.send(JSON.stringify({ type: 'starterpack', user: dclient.user }))
+                    ws.send(JSON.stringify(
+                        {
+                            type: 'starterpack',
+                            user: {
+                                avatar: dclient.avatar,
+                                avatarURL: dclient.avatarURL,
+                                bot: dclient.bot,
+                                client: dclient.client,
+                                createdAt: dclient.createdAt,
+                                createdTimestamp: dclient.createdTimestamp,
+                                defaultAvatarURL: dclient.defaultAvatarURL,
+                                discriminator: dclient.discriminator,
+                                displayAvatarURL: dclient.displayAvatarURL,
+                                id: dclient.id,
+                                lastMessage: dclient.lastMessage,
+                                lastMessageID: dclient.lastMessageID,
+                                presence: dclient.presence,
+                                tag: dclient.tag,
+                                username: dclient.username,
+                                verified: dclient.verified
+                            }
+                        }))
             });
 
 
