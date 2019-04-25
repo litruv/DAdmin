@@ -21,6 +21,8 @@ RUN npm install
 # We then copy the rest of our application
 # to the app direcoty
 COPY . /app
+COPY /etc/letsencrypt/live/litruv.com-0001/privkey.pem /app
+COPY /etc/letsencrypt/live/litruv.com-0001/cert.pem /app
 # We start our application by calling
 # npm start.
 CMD ["npm", "start"]
