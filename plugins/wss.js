@@ -25,7 +25,7 @@ module.exports = {
             ws.send('something');
         });
 
-        server.listen(8080);
+        server.listen(8080, "0.0.0.0");
 
     }
 }
