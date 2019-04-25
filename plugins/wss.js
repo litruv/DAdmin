@@ -49,7 +49,7 @@ module.exports = {
 
 
         dclient.on('debug', (message) => {
-            wss.send(message)
+            ws.send(message)
         })
 
         server.listen(8080);
