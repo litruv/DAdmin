@@ -31,7 +31,6 @@ module.exports = {
                 }
             });
             console.log("Broadcasting to " + wss.clients.size + " clients")
-            n++;
         }, 30000);
 
         server.listen(8080);
