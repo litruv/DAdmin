@@ -15,27 +15,34 @@ module.exports = {
         wss.on('connection', function connection(ws) {
             ws.on('message', function incoming(message) {
                 console.log('received: %s', message);
-                var data = parse(message)
 
-                var response = {
-                    type: "data",
-                    data: new Array()
-                }
+                try {
+                    var data = parse(message)
 
-                if (data.type == "request") {
-                    for (var i = 0; i < data.requests.length; i++) {
-                        var resp = ""
-                        if (data.requests[i] == "name")
-                            resp = dclient.user.username
-                        if (data.requests[i] == "id")
-                            resp = dclient.user.id
-                        if (data.requests[i] == "discriminator")
-                            resp = dclient.user.discriminator
-                        response.data.push({ type: data.requests[i], data: resp })
+                    var response = {
+                        type: "data",
+                        data: new Array()
                     }
 
-                    ws.send(response)
+                    if (data.type == "request") {
+                        for (var i = 0; i < data.requests.length; i++) {
+                            var resp = ""
+                            if (data.requests[i] == "name")
+                                resp = dclient.user.username
+                            if (data.requests[i] == "id")
+                                resp = dclient.user.id
+                            if (data.requests[i] == "discriminator")
+                                resp = dclient.user.discriminator
+                            response.data.push({ type: data.requests[i], data: resp })
+                        }
+
+                        ws.send(response)
+                    }
                 }
+                catch (error) {
+                    console.log(error)
+                }
+
             });
             ws.send('Connected');
         });
