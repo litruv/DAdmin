@@ -33,6 +33,8 @@ module.exports = {
                                 resp = dclient.user.id
                             if (data.requests[i] == "discriminator")
                                 resp = dclient.user.discriminator
+                            if (data.requests[i] == "avatar")
+                                resp = dclient.user.avatarURL
                             response.data.push({ type: data.requests[i], data: resp })
                         }
 
