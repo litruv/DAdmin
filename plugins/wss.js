@@ -14,65 +14,25 @@ module.exports = {
         });
         const wss = new WebSocket.Server({ server });
 
-        function noop() { }
-
-        function heartbeat() {
-            this.isAlive = true;
-        }
 
         wss.on('connection', function connection(ws) {
-            ws.isAlive = true;
-
             ws.on('message', function incoming(message) {
-                if (message == "name")
-                    ws.send(stringify(
-                        {
-                            type: 'starterpack',
-                            user: {
-                                avatar: dclient.user.avatar,
-                                avatarURL: dclient.user.avatarURL,
-                                bot: dclient.user.bot,
-                                //   client: dclient.user.client,
-                                createdAt: dclient.user.createdAt,
-                                createdTimestamp: dclient.user.createdTimestamp,
-                                defaultAvatarURL: dclient.user.defaultAvatarURL,
-                                discriminator: dclient.user.discriminator,
-                                displayAvatarURL: dclient.user.displayAvatarURL,
-                                id: dclient.user.id,
-                                //lastMessage: dclient.user.lastMessage,
-                                lastMessageID: dclient.user.lastMessageID,
-                                presence: dclient.user.presence,
-                                tag: dclient.user.tag,
-                                username: dclient.user.username,
-                                verified: dclient.user.verified
-                            }
-                        }))
-
-
+                console.log('received: %s', message);
             });
 
-            ws.on('pong', heartbeat);
-
-            dclient.on('message', (message) => {
-                wss.clients.forEach(function each(client) {
-                    if (client !== ws && client.readyState === WebSocket.OPEN) {
-                        client.send(stringify(message))
-                    }
-                })
-
-            })
-            // ws.send('something');
+            ws.send('Connected');
         });
 
-
-        const interval = setInterval(function ping() {
-            wss.clients.forEach(function each(ws) {
-                if (ws.isAlive === false) return ws.terminate();
-
-                ws.isAlive = false;
-                ws.ping(noop);
+        setInterval(() => { //heartbeat
+            wss.clients.forEach(client => {
+                if (client.readyState == client.OPEN) {
+                    client.send(JSON.stringify({ type: "heartbeat", time: new Date().getTime() }))
+                    client.ping()
+                }
             });
-        }, 5000);
+            console.log("Broadcasting to " + wss.clients.size + " clients")
+            n++;
+        }, 30000);
 
         server.listen(8080);
 
