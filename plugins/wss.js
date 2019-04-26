@@ -36,7 +36,7 @@ module.exports = {
                             response.data.push({ type: data.requests[i], data: resp })
                         }
 
-                        ws.send(stringify(response))
+                        ws.send(JSON.stringify(response))
                     }
                 }
                 catch (error) {
