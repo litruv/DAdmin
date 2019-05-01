@@ -14,10 +14,14 @@ const colors = require('colors');
 //Database Connection
 client.database.connect().then(con => {
   try {
-    client.database.get_setting('token').then(token => {
-      console.log("=Discord==================")
-      client.login(token)
-    })
+    console.log("=Discord==================")
+    client.database.get_setting('token')
+      .then(token => {
+        client.login(token)
+      })
+      .catch(e => {
+        console.log("Error getting token")
+      })
   } catch (e) {
     console.log(e)
   }
