@@ -21,9 +21,7 @@ module.exports = {
                                             .then(chan => {
                                                 chan.setParent(autoparent)
                                                 chan.setTopic(cid)
-                                                chan.send(newMember + " **Hey**, this is the Text channel for your voice chat.\r\n **IT WILL BE DELETED ONCE EVERYONE LEAVES**")
-                                                chan.send("If you would like to **share screens** or use your **webcam**: **<http://www.discordapp.com/channels/" + chan.guild.id + "/" + cid + "/>**")
-                                                chan.send("*⁽ᵗʰᶦˢ ᶠᵉᵃᵗᵘʳᵉ ᶦˢ ᵒⁿˡʸ ᵃᵛᵃᶦˡᵃᵇˡᵉ ᶦᶠ ʸᵒᵘ'ʳᵉ ᶦⁿ ᵗʰᵉ ᶜʰᵃᵗ⁾*")
+                                                chan.send(newMember + " **Hey**, this is the Text channel for your voice chat.\r\n **IT WILL BE DELETED ONCE EVERYONE LEAVES**\nIf you would like to **share screens** or use your **webcam**: **<http://www.discordapp.com/channels/" + chan.guild.id + "/" + cid + "/>**\n*⁽ᵗʰᶦˢ ᶠᵉᵃᵗᵘʳᵉ ᶦˢ ᵒⁿˡʸ ᵃᵛᵃᶦˡᵃᵇˡᵉ ᶦᶠ ʸᵒᵘ'ʳᵉ ᶦⁿ ᵗʰᵉ ᶜʰᵃᵗ⁾*")
                                                 //chan.send("https://gfycat.com/RadiantFoolishAmmonite")
 
                                                 console.log("Made a Auto Channel Set: " + newMember.presence.game.name + " - " + newMember.displayName)
@@ -45,9 +43,7 @@ module.exports = {
                                             .then(chan => {
                                                 chan.setParent(autoparent)
                                                 chan.setTopic(cid)
-                                                chan.send(newMember + " **Hey**, this is the Text channel for your voice chat.\r\n **IT WILL BE DELETED ONCE EVERYONE LEAVES**")
-                                                chan.send("\\***NEW**\\* If you would like to **share screens** or use your **webcam**: **<http://www.discordapp.com/channels/" + chan.guild.id + "/" + cid + "/>**")
-                                                chan.send("*⁽ᵗʰᶦˢ ᶠᵉᵃᵗᵘʳᵉ ᶦˢ ᵒⁿˡʸ ᵃᵛᵃᶦˡᵃᵇˡᵉ ᶦᶠ ʸᵒᵘ'ʳᵉ ᶦⁿ ᵗʰᵉ ᶜʰᵃᵗ⁾*")
+                                                chan.send(newMember + " **Hey**, this is the Text channel for your voice chat.\r\n **IT WILL BE DELETED ONCE EVERYONE LEAVES**\nIf you would like to **share screens** or use your **webcam**: **<http://www.discordapp.com/channels/" + chan.guild.id + "/" + cid + "/>**\n*⁽ᵗʰᶦˢ ᶠᵉᵃᵗᵘʳᵉ ᶦˢ ᵒⁿˡʸ ᵃᵛᵃᶦˡᵃᵇˡᵉ ᶦᶠ ʸᵒᵘ'ʳᵉ ᶦⁿ ᵗʰᵉ ᶜʰᵃᵗ⁾*")
                                                 // chan.send("https://gfycat.com/RadiantFoolishAmmonite")
                                                 console.log("Made a Auto Channel Set: General - " + newMember.displayName)
 
