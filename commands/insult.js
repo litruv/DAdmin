@@ -6,8 +6,8 @@ module.exports = {
     permissions: ['READ_MESSAGES'],
     category: 'general',
     command: (client, msg) => {
-        if (msg.mentions.members.array().length > 0)
-            msg.channel.send(msg.mentions.members.first() + ', ' + getInsult());
+        if (msg.mentions.members.filter(member => { member.id != client.user.id }).array().length > 0)
+            msg.channel.send(msg.mentions.members.filter(member => { member.id != client.user.id }).first() + ', ' + getInsult());
         else
             msg.reply(getInsult());
     }

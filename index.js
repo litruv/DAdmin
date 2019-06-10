@@ -163,6 +163,7 @@ function doCommand(msg, prefix) {
   else {
     var command = message.replace("@" + msg.guild.me.displayName, "").trim().split(" ", 1)[0];
     msg.suffix = message.replace("@" + msg.guild.me.displayName, "").replace(command, "").trim()
+    //msg.mentions.users = msg.mentions.users.filter(mention => mention.id != client.user.id);
   }
 
 
