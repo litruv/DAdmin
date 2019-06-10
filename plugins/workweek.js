@@ -14,5 +14,7 @@ module.exports = {
             })
         }
         on15Update()
+
+        console.log(moment().format())
     }
 }
