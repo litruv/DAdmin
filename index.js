@@ -151,11 +151,21 @@ function doPMCommand(msg, prefix) {
 
 function doCommand(msg, prefix) {
   var message = msg.cleanContent
-  if (!message.startsWith(prefix)) return
+
+  if (msg.mentions.members.get(client.user.id) == undefined)
+    if (!message.startsWith(prefix)) return
 
   //Split into command + args
-  const command = message.substring(prefix.length).split(/[ \n]/)[0].trim().toLowerCase()
-  msg.suffix = message.substring(prefix.length + command.length).trim()
+  if (message.startsWith(prefix)) {
+    var command = message.substring(prefix.length).split(/[ \n]/)[0].trim().toLowerCase()
+    msg.suffix = message.substring(prefix.length + command.length).trim()
+  }
+  else {
+    var command = message.replace("@" + msg.guild.me.displayName, "").trim().split(" ", 1)[0];
+    msg.suffix = message.replace("@" + msg.guild.me.displayName, "").replace(command, "").trim()
+  }
+
+
 
   var cmds = client.cachedcommands.filter(cmd => cmd.alias == command);
   if (cmds.length > 0) {
