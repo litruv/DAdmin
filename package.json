@@ -11,6 +11,7 @@
     "flatted": "^2.0.0",
     "fluent-ffmpeg": "^2.1.2",
     "inquirer": "^6.2.2",
+    "moment": "^2.24.0",
     "mysql": "^2.16.0",
     "opusscript": "0.0.6",
     "ping": "^0.2.2",
