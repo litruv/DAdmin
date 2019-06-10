@@ -10,6 +10,9 @@ COPY package.json /app
 EXPOSE 8080/tcp
 EXPOSE 8080/udp
 
+ENV TZ=Australia/Melbourne
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN apt-get update \
     && apt-get clean \
     && apt-get install -y ffmpeg
