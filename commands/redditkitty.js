@@ -4,7 +4,7 @@ var url = "https://www.reddit.com/r/cats/hot/.json?limit=100";
 module.exports = {
     name: 'Kitty',
     alias: ['kitty'],
-    helptext: 'Inserts good boye from reddit/r/cats',
+    helptext: 'Inserts kitteh from reddit/r/cats',
     helphide: false,
     permissions: ['READ_MESSAGES'],
     category: 'general',
