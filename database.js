@@ -72,12 +72,28 @@ function writeSetting(settingName, settingValue, guildId = 0) {
     return new Promise((resolve, reject) => {
         setTimeout(reject, 1000, new Error("Didn't write something within a second"))
 
-        connection.query(`INSERT INTO settings (setting, value, serverID) VALUES ('${settingName}', '${settingValue}', '${guildId}')`,
+        connection.query(`SELECT * FROM settings WHERE setting='${settingName}' AND serverID='${guildId}'`,
             function (error, results, fields) {
-                if (error)
-                    reject(error)
-                resolve(results)
+                if (results.length > 0) {
+                    //console.log(`UPDATE settings SET value=${settingValue} WHERE setting=${settingName} AND serverID=${guildId}`)
+                    connection.query(`UPDATE settings SET value= ? WHERE setting= ? AND serverID= ?`, [settingValue, settingName, guildId],
+                        function (error, results, fields) {
+                            if (error)
+                                reject(error)
+                            resolve(results)
+                        })
+                }
+                else {
+                    connection.query(`INSERT INTO settings (setting, value, serverID) VALUES ('${settingName}', '${settingValue}', '${guildId}')`,
+                        function (error, results, fields) {
+                            if (error)
+                                reject(error)
+                            resolve(results)
+                        })
+
+                }
             })
+
     })
 }
 

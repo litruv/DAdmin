@@ -77,8 +77,9 @@ module.exports = {
                             }
                     })
                 })
-                if (newUserChannel == "269704205399359491" && newMember.id == "363951609002065931") {
-                    newMember.setVoiceChannel("518212645229297705")
+                    .catch(err)
+                {
+                    console.log("No autovoice for " + newMember.guild.name)
                 }
             }
             catch (e) {
