@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-/* jshint esversion: 6 */
-
 //Includes
 const Discord = require('discord.js')
 const client = new Discord.Client()
