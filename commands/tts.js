@@ -61,7 +61,7 @@ module.exports = {
                                     const timeoutObj = setTimeout(() => {
                                         const dispatcher = null;
                                         connection.disconnect();
-                                    }, 60000)
+                                    }, 600000)
                                 });
 
                                 dispatcher.on('error', error => {
